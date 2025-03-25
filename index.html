@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Feedback da Palestra: IA na Engenharia de Requisitos</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f6f8;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+    }
+
+    .container {
+      background-color: white;
+      max-width: 600px;
+      width: 100%;
+      padding: 30px;
+      margin: 40px 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      border-radius: 8px;
+    }
+
+    h1 {
+      font-size: 24px;
+      color: #222;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 16px;
+      color: #555;
+      margin-bottom: 30px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    input[type="text"],
+    textarea,
+    select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    button {
+      background-color: #007bff;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    .rating {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .rating input {
+      display: none;
+    }
+
+    .rating label {
+      font-size: 24px;
+      color: #ccc;
+      cursor: pointer;
+    }
+
+    .rating input:checked ~ label,
+    .rating label:hover,
+    .rating label:hover ~ label {
+      color: gold;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Feedback da Palestra</h1>
+    <p>Sua opinião é muito importante! Compartilhe o que achou da palestra sobre o uso de IA Generativa na Engenharia de Requisitos.</p>
+
+    <form>
+      <label for="nome">Nome (opcional):</label>
+      <input type="text" id="nome" name="nome" placeholder="Digite seu nome">
+
+      <label for="opiniao">Sua opinião:</label>
+      <textarea id="opiniao" name="opiniao" placeholder="Escreva aqui o que achou da palestra..."></textarea>
+
+      <label>Avaliação:</label>
+      <div class="rating">
+        <input type="radio" id="estrela5" name="estrela" value="5"><label for="estrela5">★</label>
+        <input type="radio" id="estrela4" name="estrela" value="4"><label for="estrela4">★</label>
+        <input type="radio" id="estrela3" name="estrela" value="3"><label for="estrela3">★</label>
+        <input type="radio" id="estrela2" name="estrela" value="2"><label for="estrela2">★</label>
+        <input type="radio" id="estrela1" name="estrela" value="1"><label for="estrela1">★</label>
+      </div>
+
+      <button type="submit">Enviar Feedback</button>
+    </form>
+  </div>
+</body>
+</html>
