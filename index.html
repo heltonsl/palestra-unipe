@@ -3,108 +3,139 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Feedback da Palestra: IA na Engenharia de Requisitos</title>
+  <title>Feedback – IA na Engenharia de Requisitos</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --bg-color: #0f0f0f;
+      --text-color: #e5e7eb;
+      --subtext-color: #a1a1aa;
+      --highlight-color: #00f5ff;
+      --container-bg: rgba(255, 255, 255, 0.03);
+    }
+
+    .light-mode {
+      --bg-color: #f3f4f6;
+      --text-color: #111827;
+      --subtext-color: #374151;
+      --highlight-color: #4f46e5;
+      --container-bg: rgba(255, 255, 255, 0.8);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f6f8;
       margin: 0;
       padding: 0;
+      background: var(--bg-color);
+      color: var(--text-color);
+      font-family: 'Orbitron', sans-serif;
       display: flex;
       justify-content: center;
       align-items: flex-start;
       min-height: 100vh;
+      transition: background 0.3s ease, color 0.3s ease;
     }
 
     .container {
-      background-color: white;
-      max-width: 600px;
+      max-width: 800px;
       width: 100%;
-      padding: 30px;
-      margin: 40px 20px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      border-radius: 8px;
+      margin: 50px 20px;
+      padding: 40px;
+      background: var(--container-bg);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      transition: background 0.3s ease;
     }
 
     h1 {
-      font-size: 24px;
-      color: #222;
+      font-size: 28px;
+      color: var(--highlight-color);
       margin-bottom: 10px;
+      letter-spacing: 1px;
     }
 
     p {
       font-size: 16px;
-      color: #555;
+      color: var(--subtext-color);
       margin-bottom: 30px;
     }
 
-    label {
-      display: block;
-      margin-bottom: 6px;
-      font-weight: bold;
-      color: #333;
-    }
-
-    input[type="text"],
-    textarea,
-    select {
+    iframe {
       width: 100%;
-      padding: 10px;
-      margin-bottom: 20px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      font-size: 14px;
-    }
-
-    textarea {
-      resize: vertical;
-      min-height: 100px;
-    }
-
-    button {
-      background-color: #007bff;
-      color: white;
-      padding: 12px 20px;
+      height: 800px;
       border: none;
-      border-radius: 4px;
-      font-size: 16px;
+      border-radius: 8px;
+      background-color: #fff;
+      filter: brightness(0.95);
+    }
+
+    .theme-toggle {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      background: none;
+      border: 2px solid var(--highlight-color);
+      color: var(--highlight-color);
+      padding: 6px 14px;
+      border-radius: 50px;
       cursor: pointer;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 12px;
+      letter-spacing: 1px;
+      transition: background 0.3s, color 0.3s, border 0.3s;
     }
 
-    button:hover {
-      background-color: #0056b3;
+    .theme-toggle:hover {
+      background: var(--highlight-color);
+      color: #000;
     }
 
-    .rating {
-      display: flex;
-      gap: 8px;
-      margin-bottom: 20px;
-    }
+    @media (max-width: 600px) {
+      .container {
+        padding: 20px;
+      }
 
-    .rating input {
-      display: none;
-    }
+      iframe {
+        height: 600px;
+      }
 
-    .rating label {
-      font-size: 24px;
-      color: #ccc;
-      cursor: pointer;
+      .theme-toggle {
+        top: 15px;
+        right: 15px;
+      }
     }
-
-    .rating input:checked ~ label,
-    .rating label:hover,
-    .rating label:hover ~ label {
-      color: gold;
-    }
-
   </style>
 </head>
 <body>
-  <div class="container">
-  <h1>Feedback da Palestra</h1>
-  <p>Sua opinião é muito importante! Compartilhe o que achou da palestra sobre o uso de IA Generativa na Engenharia de Requisitos.</p>
+  <button class="theme-toggle" onclick="toggleTheme()">🌗 Alternar Tema</button>
 
-  <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSf94aEg07Eh9F50g3aGX35vR0nbVTo-yhyAc9-9tvIJ5VywcQ/viewform?embedded=true" width="640" height="751" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
-</div>
+  <div class="container">
+    <h1>Feedback da Palestra</h1>
+    <p>Curtiu a palestra sobre IA Generativa na Engenharia de Requisitos? Deixa sua opinião aí 👇</p>
+
+    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSf94aEg07Eh9F50g3aGX35vR0nbVTo-yhyAc9-9tvIJ5VywcQ/viewform?embedded=true" width="640" height="751" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+  </div>
+
+  <script>
+    // Alterna entre light e dark
+    function toggleTheme() {
+      document.body.classList.toggle('light-mode');
+      const isLight = document.body.classList.contains('light-mode');
+      localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    }
+
+    // Mantém a preferência salva
+    window.onload = () => {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'light') {
+        document.body.classList.add('light-mode');
+      }
+    }
+  </script>
 </body>
 </html>
